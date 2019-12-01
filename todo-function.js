@@ -13,7 +13,11 @@ const completeTodo = () => {
   const items = document.getElementsByClassName("todo-item");
   for (let i = 0; i < items.length; i++) {
     items[i].onclick = function() {
-      todos[i].completed = !todos[i].completed;
+      const todo = todos.find(todo => {
+        //not a best practice, but okay wkw
+        return todo.text == this.textContent;
+      });
+      todo.completed = !todo.completed;
       this.classList.toggle("checked");
       saveTodos(todos);
       renderTodos(todos, filters);
@@ -42,9 +46,9 @@ const renderTodos = function(todos, filters) {
     document.querySelector("#todos").appendChild(generateTodo(todo));
   });
   const count = summaryTodo(incompletedTodos);
+  completeTodo();
   document.getElementById("count").innerHTML =
     count == 0 ? "Wohoo.. you have nothing to-do" : count + " things todo";
-  completeTodo();
 };
 
 // generate todo to DOM
