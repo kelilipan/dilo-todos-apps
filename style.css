@@ -41,3 +41,6 @@ body {
   text-decoration: none;
   transition: 0.2s all ease;
 }
+.form-check-label {
+  font-size: 0.9em;
+}
