@@ -20,7 +20,7 @@ document
 
 document.querySelector("#new-todo").addEventListener("submit", function(e) {
   e.preventDefault();
-  todos.push({
+  e.target.elements.text.value !== "" && todos.push({
     text: e.target.elements.text.value,
     completed: false
   });
